@@ -1,0 +1,19 @@
+<button><a href="/ideas">Back to Ideas</a></button>
+<button><a href="/users/logout">Logout</a></button>
+<br><br>
+<h3>This is a Bright Idea from <%= @idea.user.alias %></h3>
+<p><%= @idea.content %></p>
+<br><br>
+<h3>These are the people who have liked this idea:</h3>
+<table>
+  <tr>
+    <td>Alias</td>
+    <td>Name</td>
+  </tr>
+  <% @likes.each do |like| %>
+  <tr>
+    <td><a href="/users/<%= like.user.id %>"><%= like.user.alias %></a></td>
+    <td><%= like.user.name %></td>
+  </tr>
+  <% end %>
+</table>

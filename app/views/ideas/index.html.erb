@@ -1,0 +1,17 @@
+<h1>Hello, <%= @user.alias %></h1>
+<button><a href="/users/logout">Logout</a></button>
+
+<form action="/ideas/create" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <textarea name="content" rows="8" cols="80"></textarea>
+  <input type="submit" name="submit" value="Share your idea!">
+</form>
+<br><br>
+  <div>
+    <% @ideas.each do |idea| %>
+    <h3><a href="/users/<%= idea.user.id %>"><%= idea.user.alias %></a></h3>
+    <p><%= idea.content %></p>
+    <button><a href="/ideas/like/<%= idea.id %>">Like This Post</a></button>
+    <button><a href="/ideas/<%= idea.id %>"><%= idea.total_likes %> People Like This</a></button>
+    <% end %>
+  </div>
